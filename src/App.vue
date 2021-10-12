@@ -1,29 +1,41 @@
 <template>
-  <Header />
-  <Timer />
-  <footer class="footer">
-        
-  </footer>
+  <Header :showError='error' @closeError='showError' />
+  <div class="principal">
+    <div class="columna1">
+      <Timer />
+    </div>
+    <div class="columna2">
+      <Tasks class="tasks" @error="showError" />
+    </div>
+  </div>
 </template>
 
 <script>
 import Timer from "./components/Timer.vue";
 import Header from "./components/Header.vue";
+import Tasks from "./components/Tasks.vue";
 
 export default {
   name: "App",
   components: {
     Timer,
     Header,
+    Tasks,
   },
   data() {
     return {
       pomo: localStorage.getItem("pomodoro"),
       sh: localStorage.getItem("shb"),
       lg: localStorage.getItem("lgb"),
-      yr:new Date(),
+      error:false,
+      quote:'We can only see a short distance ahead, but we can see plenty there that needs to be done.'
     };
   },
+  methods:{
+    showError(msg){
+      this.error=msg;
+    }
+  }
 };
 </script>
 
@@ -44,6 +56,7 @@ header {
   justify-content: space-between;
   padding: 10px 25px 10px 10px;
   margin: 0;
+  background-color: rgb(218, 210, 103);
 }
 #main {
   margin: 15px auto;
@@ -61,7 +74,7 @@ header {
   min-width: min-content;
 }
 footer {
-  position:fixed;
+  position: fixed;
   bottom: 0;
   padding: 0 25% 15px 25%;
   text-align: center;
@@ -137,5 +150,22 @@ footer {
   background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
   cursor: pointer;
+}
+.tasks {
+  margin: 30px auto;
+  max-width: 350px;
+  min-width: 2  00px;
+
+  padding: 15px;
+  border-radius: 10px;
+}
+@media only screen and (min-width: 1023px) {
+  .principal {
+    display: flex;
+  }
+  .columna1, .columna2{
+    width: 50%;
+  }
+
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div @click.self="showsett" v-if="settings" class="background">
-      <form  @submit.prevent="save" class="settings">
+      <form @submit.prevent="save" class="settings">
         <h1>Configuración</h1>
         <hr />
         <div class="row">
@@ -9,9 +9,9 @@
             <label>Pomodoro</label>
           </div>
           <div class="campos">
-            <input type="number" v-model="mpomo" />
+            <input type="number" min="0" max="60" required v-model="mpomo" />
             <label>:</label>
-            <input type="number" v-model="spomo" />
+            <input type="number" min="0" max="60" required v-model="spomo" />
           </div>
         </div>
         <div class="row">
@@ -19,9 +19,9 @@
             <label>Descanso Corto</label>
           </div>
           <div class="campos">
-            <input type="number" v-model="msh" />
+            <input type="number" min="0" max="60" v-model="msh" />
             <label>:</label>
-            <input type="number" v-model="ssh" />
+            <input type="number" min="0" max="60" v-model="ssh" />
           </div>
         </div>
         <div class="row">
@@ -29,37 +29,162 @@
             <label>Descanso largo</label>
           </div>
           <div class="campos">
-            <input type="number" v-model="mlg" />
+            <input type="number" min="0" max="60" v-model="mlg" />
             <label>:</label>
-            <input type="number" v-model="slg" />
+            <input type="number" min="0" max="60" v-model="slg" />
           </div>
         </div>
         <button @click="save" class="start">Guardar</button>
       </form>
     </div>
   </transition>
-  <transition name=fade>
-  <div @click.self="showinfo" v-if="info" class="background">
-    <div class="settings" style="text-align: center">
-      <div>Con &#10084;&#65039; desde &#127480;&#127483;</div>
-      <div>© 2021 Rolando Cornejo. Derechos Reservados</div>
+  <transition name="fade">
+    <div @click.self="showinfo" v-if="info" class="background">
+      <div class="settings" style="text-align: center">
+        <img class="perfil" :src=perfil alt="Foto de desarrollador Rolando Cornejo">
+        <h3>Rolando Cornejo</h3><hr>
+        <h5>Estudiante de Ingenieria en Ciencias de la Computacion en UDB, desarrollador web</h5>
+        <h5>contacto: <a href="mailto:rolandojose11@gmail.com">rolandojose11@gmail.com</a></h5>
+        <br>
+        <p>Cómprame un café ☕</p>
+        <hr />
+        <a href="https://paypal.me/RolandoC123" target="_blank">
+          <button class="strike">
+            <unicon
+              name="paypal"
+              fill="royalblue"
+              width="30"
+              height="30"
+            />Donar en Paypal
+          </button></a
+        >
+
+        <a href="https://strike.me/rolandc" target="_blank">
+          <button class="strike">
+            <unicon
+              name="bitcoin"
+              fill="orange"
+              width="30"
+              height="30"
+            />Bitcoin con strike
+          </button></a
+        ><br />
+        <div>© 2021 Rolando Cornejo. Derechos Reservados</div>
+        <br />
+        <div>Hecho Con &#10084;&#65039; en El Salvador</div>
+        
+      </div>
     </div>
-  </div>
   </transition>
+  <transition name="fade">
+    <div v-show="welcome == 2" class="background">
+      <div class="settings">
+        <ul>
+          <li>
+            Utiliza el área de tareas para llevar el conteo de las actividades
+            que ya trealizaste en esta sesion
+          </li>
+          <li>
+            Toca o haz click en la tarea que ya completaste para tacharla de la
+            lista
+          </li>
+          <li>
+            Utiliza el boton de basura para eliminar todas las tareas en tu
+            lista
+          </li>
+          <li>
+            Para eliminar solo una tarea, toca dos veces o haz doble click en la
+            tarea que deseas eliminar
+          </li>
+        </ul>
+        <button @click="next" class="start">¡Empecemos!</button>
+      </div>
+    </div>
+  </transition>
+  <transition name="fade">
+    <div v-show="welcome == 1" class="background">
+      <div class="settings">
+        <h1>¡Bienvenido a Pomodoro Hero!</h1>
+        <ul>
+          <li>
+            Ayuda a chickn' a llegar a su destino completando tareas y pomodoros
+          </li>
+          <li>
+            Esta aplicacion te ayudará a concentrarte y ser más productivo con
+            la tecnica Pomodoro, trabajas 25 minutos y luego descansas 5 o 10
+            minutos.
+          </li>
+          <li>
+            En un futuro con cada pomodoro o tarea completada ganarás puntos y
+            podrás competir con tus amigos y otros usuarios por el primer lugar
+            en la tabla de clasificaciones
+          </li>
+        </ul>
+        <button @click="next" class="start">Entendido</button>
+      </div>
+    </div>
+  </transition>
+
+  <transition name="fade">
+    <div v-show="showError" class="background">
+      <div class="settings">
+        <h1>ERROR</h1>
+        <p>Escribe tu tarea antes de añadirla</p>
+        <button @click="closeError" class="start">Entendido</button>
+      </div>
+    </div>
+  </transition>
+
+  <transition name="fade">
+    <div v-show="welcome%15 == 0" class="background">
+      <div class="settings">
+        <img class="perfil" :src=perfil alt="Foto de desarrollador Rolando Cornejo">
+        <h1>¡Hola! 👋🏻👋🏻</h1>        
+        ¿Te está gustando Pomodoro Hero?
+        <p>
+          Soy Rolando, el creador de Pomodoro Hero, ayudame a mantener este
+          proyecto libre de anuncios con una propina
+        </p>
+        <a href="https://paypal.me/RolandoC123" target="_blank">
+          <button class="strike">
+            <unicon
+              name="paypal"
+              fill="royalblue"
+              width="30"
+              height="30"
+            />Donar en Paypal
+          </button></a
+        >
+        <a href="https://strike.me/rolandc" target="_blank">
+          <button class="strike">
+            <unicon
+              name="bitcoin"
+              fill="orange"
+              width="30"
+              height="30"
+            />Bitcoin con strike
+          </button></a
+        >
+        <button @click="next" class="start">En otra ocasión</button>
+      </div>
+    </div>
+  </transition>
+  
   <header>
-    <h3 class="Title">
-      <img :src="logo" alt="Pomodoro hero logo" /> Pomodoro Hero
-    </h3>
+    <p class="Title">
+      <img :src="logo" alt="Pomodoro hero logo" style="vertical-align: sub" />
+      Pomodoro Hero
+    </p>
     <div class="options">
-      <button @click="showinfo" class="settingbtn" id="settings">
-        <unicon name="question-circle" width="30" height="30" />
+      <button @click="showinfo" class="settingbtn" id="info" aria-label="Información">
+        <unicon name="info-circle" width="30" height="30" />
       </button>
       <!--<a
         href="https://strike.me/rolandc"
         target="_blank"
         rel="noopener noreferrer"
         ></a>-->
-      <button @click="showsett" class="settingbtn" id="settings">
+      <button @click="showsett" class="settingbtn" id="settings" aria-label="Configuracion">
         <unicon name="setting" width="30" height="30" />
       </button>
     </div>
@@ -68,6 +193,7 @@
 
 <script>
 export default {
+  props:['showError'],
   data() {
     return {
       pomo: parseInt(localStorage.getItem("pomodoro")),
@@ -75,6 +201,7 @@ export default {
       lg: parseInt(localStorage.getItem("lgb")),
       settings: false,
       info: false,
+      welcome: localStorage.getItem("welcome"),
       mpomo: 0,
       spomo: 0,
       msh: 0,
@@ -82,6 +209,7 @@ export default {
       mlg: 0,
       slg: 0,
       logo: require("@/assets/favicon-32x32.png"),
+      perfil: require('@/assets/perfil.jpg')
     };
   },
   methods: {
@@ -93,7 +221,7 @@ export default {
       localStorage.setItem("shb", this.msh * 60 + this.ssh);
       localStorage.setItem("lgb", this.mlg * 60 + this.slg);
       this.settings = false;
-      alert("Datos guerdados");
+      alert("Datos guardados");
     },
     showsett() {
       this.settings = !this.settings;
@@ -101,8 +229,22 @@ export default {
     showinfo() {
       this.info = !this.info;
     },
+    next() {
+      this.welcome++;
+      localStorage.setItem("welcome", this.welcome);
+    },
+    closeError(){
+      $this.$emit('closeError',false)
+    }
   },
   mounted() {
+    if (this.welcome == null) {
+      localStorage.setItem("welcome", 1);
+      this.welcome = localStorage.getItem("welcome");
+    } else {
+      this.welcome++;
+      localStorage.setItem("welcome", this.welcome);
+    }
     if (this.pomo == null || this.sh == null || this.lg == null) {
       localStorage.setItem("pomodoro", 1500);
       localStorage.setItem("shb", 300);
@@ -122,6 +264,12 @@ export default {
 </script>
 
 <style scoped>
+.perfil{
+  width: 50%;
+  height: 50%;
+  border-radius: 100px;
+  position: relative;
+}
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.25s ease;
@@ -136,17 +284,18 @@ export default {
   height: 100%;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.308);
-  z-index: 2;
+  z-index: 1;
+  
 }
 .settings {
   background-color: white;
-  margin: 25vh auto;
+  margin: 10vh auto;
   padding: 25px;
   max-width: 325px;
   border-radius: 10px;
 }
 input {
-  width: 45%;
+  width: 40.5%;
   margin: 0 5px;
   text-align: center;
   padding: 5px;
@@ -166,10 +315,15 @@ input {
   background-color: rgba(255, 255, 255, 0);
   border: none;
   width: 15px;
-  margin-left: 15px;
+  margin-right: 25px;
 }
-.title {
-  display: inline;
-  vertical-align: center;
+.strike {
+  color: white;
+  background-color: black;
+  width: max-content;
+  margin: 2px auto;
+  border-radius: 10px;
+  padding: 5px;
+  font-family: Montserrat;
 }
 </style>
