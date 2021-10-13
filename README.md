@@ -1,8 +1,8 @@
 
 # Pomodoro Hero 🍅
 
-Pomodoro Hero es una aplicación que te ayuda a concentrarte en las tareas que quieres realizar, utilizando la técnica Pomodoro (Trabajar 25 minutos y descansar 5).
-En un futuro podrás recolectar puntos y competir con tus amigos para llegar a los primeros lugares en las tablas de puntaje y ayudas a Chickn' a llegar a su destino.
+Pomodoro Hero es un juego PWA que te ayuda a concentrarte en las tareas que quieres realizar, utilizando la técnica Pomodoro (Trabajar 25 minutos y descansar 5).
+Por el momento solo es un temporizador pomodoro. En un futuro podrás recolectar puntos y competir con tus amigos para llegar a los primeros lugares en las tablas de puntaje y ayudas a Chickn' a llegar a su destino.
 
 ![Chickn'](https://github.com/RolandoCornejo/pomodoro-hero/blob/main/public/img/chikn.png?raw=true)
 
@@ -26,7 +26,13 @@ En un futuro podrás recolectar puntos y competir con tus amigos para llegar a l
 
  - [Vue.js](https://v3.vuejs.org/)
  - [Vue-unicons](https://antonreshetov.github.io/vue-unicons/)
- - 
+ -
+
+## Contribuir 🖐
+Ayúdame a mejorar el proyecto.
+Si encuentras algún bug, un problema de interfaz o tienes una sugerencia crea un GitHub issue.
+Si haces una mejora o implementas una nueva función haz un pull request en la rama 'development' detallando las modificaciones.
+ 
 ## Project setup
 ```
 npm install
@@ -44,10 +50,6 @@ npm run build
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-## Contribuir 🖐
-Ayúdame a mejorar el proyecto.
-Si encuentras algún bug, un problema de interfaz o tienes una sugerencia crea un GitHub issue.
-Si haces una mejora o implementas una nueva función haz un pull request detallando las modificaciones.
 
 ## Licencia ⚖
 Todo el código fuente aquí distribuido está disponible bajo la licencia [GNU Affero General Public License, version 3](https://www.gnu.org/licenses/agpl-3.0.html).
