@@ -41,11 +41,22 @@
   <transition name="fade">
     <div @click.self="showinfo" v-if="info" class="background">
       <div class="settings" style="text-align: center">
-        <img class="perfil" :src=perfil alt="Foto de desarrollador Rolando Cornejo">
-        <h3>Rolando Cornejo</h3><hr>
-        <h5>Estudiante de Ingenieria en Ciencias de la Computacion en UDB, desarrollador web</h5>
-        <h5>contacto: <a href="mailto:rolandojose11@gmail.com">rolandojose11@gmail.com</a></h5>
-        <br>
+        <img
+          class="perfil"
+          :src="perfil"
+          alt="Foto de desarrollador Rolando Cornejo"
+        />
+        <h3>Rolando Cornejo</h3>
+        <hr />
+        <h5>
+          Estudiante de Ingenieria en Ciencias de la Computacion en UDB,
+          desarrollador web
+        </h5>
+        <h5>
+          contacto:
+          <a href="mailto:rolandojose11@gmail.com">rolandojose11@gmail.com</a>
+        </h5>
+        <br />
         <p>Cómprame un café ☕</p>
         <hr />
         <a href="https://paypal.me/RolandoC123" target="_blank">
@@ -70,9 +81,12 @@
           </button></a
         ><br />
         <div>© 2021 Rolando Cornejo. Derechos Reservados</div>
-        <br />
+        <div>
+          <a href="">
+            <img src="https://www.gnu.org.ua/graphics/agplv3-88x31.png" alt="licensia AGPLv3">
+          </a>
+        </div>
         <div>Hecho Con &#10084;&#65039; en El Salvador</div>
-        
       </div>
     </div>
   </transition>
@@ -136,10 +150,14 @@
   </transition>
 
   <transition name="fade">
-    <div v-show="welcome%15 == 0" class="background">
+    <div v-show="welcome % 30 == 0" class="background">
       <div class="settings">
-        <img class="perfil" :src=perfil alt="Foto de desarrollador Rolando Cornejo">
-        <h1>¡Hola! 👋🏻👋🏻</h1>        
+        <img
+          class="perfil"
+          :src="perfil"
+          alt="Foto de desarrollador Rolando Cornejo"
+        />
+        <h1>¡Hola! 👋🏻👋🏻</h1>
         ¿Te está gustando Pomodoro Hero?
         <p>
           Soy Rolando, el creador de Pomodoro Hero, ayudame a mantener este
@@ -169,14 +187,29 @@
       </div>
     </div>
   </transition>
-  
+
   <header>
     <p class="Title">
       <img :src="logo" alt="Pomodoro hero logo" style="vertical-align: sub" />
       Pomodoro Hero
     </p>
+
     <div class="options">
-      <button @click="showinfo" class="settingbtn" id="info" aria-label="Información">
+      <a
+        href="https://github.com/RolandoCornejo/pomodoro-hero/"
+        target="_blanck"
+        class="settingbtn"
+        id="settings"
+        aria-label="Configuracion"
+      >
+        <unicon name="github" width="30" height="30" />
+      </a>
+      <button
+        @click="showinfo"
+        class="settingbtn"
+        id="info"
+        aria-label="Información"
+      >
         <unicon name="info-circle" width="30" height="30" />
       </button>
       <!--<a
@@ -184,7 +217,12 @@
         target="_blank"
         rel="noopener noreferrer"
         ></a>-->
-      <button @click="showsett" class="settingbtn" id="settings" aria-label="Configuracion">
+      <button
+        @click="showsett"
+        class="settingbtn"
+        id="settings"
+        aria-label="Configuracion"
+      >
         <unicon name="setting" width="30" height="30" />
       </button>
     </div>
@@ -193,7 +231,7 @@
 
 <script>
 export default {
-  props:['showError'],
+  props: ["showError"],
   data() {
     return {
       pomo: parseInt(localStorage.getItem("pomodoro")),
@@ -209,7 +247,7 @@ export default {
       mlg: 0,
       slg: 0,
       logo: require("@/assets/favicon-32x32.png"),
-      perfil: require('@/assets/perfil.jpg')
+      perfil: require("@/assets/perfil.jpg"),
     };
   },
   methods: {
@@ -233,9 +271,9 @@ export default {
       this.welcome++;
       localStorage.setItem("welcome", this.welcome);
     },
-    closeError(){
-      $this.$emit('closeError',false)
-    }
+    closeError() {
+      $this.$emit("closeError", false);
+    },
   },
   mounted() {
     if (this.welcome == null) {
@@ -264,7 +302,7 @@ export default {
 </script>
 
 <style scoped>
-.perfil{
+.perfil {
   width: 50%;
   height: 50%;
   border-radius: 100px;
@@ -285,7 +323,6 @@ export default {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.308);
   z-index: 1;
-  
 }
 .settings {
   background-color: white;
