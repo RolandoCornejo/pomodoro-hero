@@ -80,9 +80,9 @@
             />Bitcoin con strike
           </button></a
         ><br />
-        <div>© 2021 Rolando Cornejo. Derechos Reservados</div>
+        <div>Copyright © 2021 Rolando Cornejo.</div>
         <div>
-          <a href="">
+          <a href="https://github.com/RolandoCornejo/pomodoro-hero/blob/main/LICENSE" target="_blank">
             <img src="https://www.gnu.org.ua/graphics/agplv3-88x31.png" alt="licensia AGPLv3">
           </a>
         </div>
