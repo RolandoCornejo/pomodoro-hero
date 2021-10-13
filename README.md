@@ -54,3 +54,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## Licencia ⚖
 Todo el código fuente aquí distribuido está disponible bajo la licencia [GNU Affero General Public License, version 3](https://www.gnu.org/licenses/agpl-3.0.html).
 
+> "We can only see a short distance ahead, but we can see plenty there that needs to be done."
+> Alan Turing.
+
