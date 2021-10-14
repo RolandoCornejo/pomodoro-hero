@@ -6,6 +6,9 @@ Por el momento solo es un temporizador pomodoro. En un futuro podrás recolectar
 
 ![Chickn'](https://github.com/RolandoCornejo/pomodoro-hero/blob/main/public/img/chikn.png?raw=true)
 
+## ¿Por qué otro pomodoro? 🙄
+Ya se que hay una infinidad de aplicaciones pomodoro, las probé casi todas y no me funcionaban, así que se me ocurrió que si le añadía una mecánica de juego, así como las aplicaciones que te dan puntos y descuentos por caminar o competir con tus amigos a hacer ejercicio, pues me podría ser más útil y no encontré ninguna aplicación como esa, así que la hice :)
+
 ## Funciones 🐔
 
  - Modifica la duración de pomodoro, descanso corto y descanso largo.
