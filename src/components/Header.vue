@@ -18,7 +18,7 @@
           <div class="titulo">
             <label>Descanso Corto</label>
           </div>
-          <div class="campos">
+          <div class="campos"> 
             <input type="number" min="0" max="60" v-model="msh" />
             <label>:</label>
             <input type="number" min="0" max="60" v-model="ssh" />
